@@ -1,0 +1,18 @@
+class Solution:
+    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+        sol = []
+        while len(strs):
+            val = strs[0]
+            curr=[val]
+            del strs[0]
+            idx2 = 0
+            while idx2 < len(strs):
+                val2 = strs[idx2]
+                if len(val) != len(val2) or Counter(val) != Counter(val2):
+                    idx2 = idx2 + 1
+                    continue
+                curr.append(val2)
+                del strs[idx2]
+            sol.append(curr)
+
+        return sol
